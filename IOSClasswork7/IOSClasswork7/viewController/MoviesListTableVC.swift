@@ -41,7 +41,7 @@ class MoviesListTableVC: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        performSegue(withIdentifier: "next", sender: nil)
+        performSegue(withIdentifier: "next", sender: indexPath.row)
     }
 
     /*
@@ -71,22 +71,24 @@ class MoviesListTableVC: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {if segue.identifier == "next"{let vc = segue.destination as! MovieDetailsViewController
+        
+        vc.movieData = MoviesData[sender as! Int]
+        
     }
-    */
+   
 
+}
 }
